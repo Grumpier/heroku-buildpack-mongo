@@ -14,14 +14,14 @@ heroku_dir=$build_dir/.heroku
 mkdir -p $heroku_dir/mongo
 warnings=$(mktemp)
 
-# Install MongoDB 4.0 to use mongo commands
-mongo_version="4.1.5"
-echo "-----> Downloading and installing MongoDB version ${mongo_version}..."
+# Install MongoDB Database Tools to use mongo commands
+mongo_version="100.9.4"
+echo "-----> Downloading and installing MongoDB Tools version ${mongo_version}..."
 [[ $STACK = "heroku-22" ]] && os_id="amazon"
 
-file_name="mongodb-linux-x86_64-${os_id}-${mongo_version}.tgz"
+file_name="mongodb-database-tools-amazon-x86_64-100.9.4.tgz"
 folder_name=`echo "$file_name" | sed 's/\.tgz$//'`
-download_url="https://fastdl.mongodb.org/linux/${file_name}"
+download_url="https://fastdl.mongodb.org/tools/db/${file_name}"
 curl $download_url -s -o - | tar xzf - -C /tmp
 
 # Move MongoDB binaries into the app directory
